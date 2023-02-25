@@ -10,7 +10,7 @@ public class GoldTracker : MonoBehaviour
 
     private void OnEnable()
     {
-        Actions.OnEnemyKilled += updateScore;
+        Actions.OnEnemyKilled += updateGold;
     }
     void Start()
     {
@@ -18,7 +18,7 @@ public class GoldTracker : MonoBehaviour
         goldLabel.text = gold.ToString();
     }
 
-    public void updateScore(Enemy enemy)
+    public void updateGold(Enemy enemy)
     {
         gold += enemy.enemyGoldValue;
         goldLabel.text = gold.ToString();
@@ -26,6 +26,17 @@ public class GoldTracker : MonoBehaviour
 
     private void OnDisable()
     {
-        Actions.OnEnemyKilled -= updateScore;
+        Actions.OnEnemyKilled -= updateGold;
+    }
+
+    public int GetGold()
+    {
+        return gold;
+    }
+
+    public void UseGold(int goldUsed)
+    {
+        gold -= goldUsed;
+        goldLabel.text = gold.ToString();
     }
 }
