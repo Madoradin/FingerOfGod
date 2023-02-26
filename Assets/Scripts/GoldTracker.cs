@@ -14,7 +14,7 @@ public class GoldTracker : MonoBehaviour
     }
     void Start()
     {
-        gold = 0;
+        gold = 50;
         goldLabel.text = gold.ToString();
     }
 

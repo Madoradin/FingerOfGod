@@ -18,12 +18,15 @@ public class Targetter : MonoBehaviour
 
     private Vector3 lookDirection;
 
+    [SerializeField] private Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
         fireRate = gameObject.GetComponent<Defender>().fireRate;
         findTargetDelay = 1 / fireRate;
+        fireCooldown = 1f / fireRate;
         InvokeRepeating("UpdateTarget", 0f, findTargetDelay);
     }
 
@@ -35,11 +38,19 @@ public class Targetter : MonoBehaviour
 
         if(fireCooldown <= 0)
         {
-            Fire();
+            StartCoroutine(PlayFire());
             fireCooldown = 1f / fireRate;
         }
 
         fireCooldown -= Time.deltaTime;
+    }
+
+    IEnumerator PlayFire()
+    {
+        animator.speed = (Mathf.Clamp((1 / fireRate), 0, 1) * 2);
+        animator.Play("ArcherAnim");
+        yield return new WaitWhile(() => animator.GetCurrentAnimatorStateInfo(0).normalizedTime <= 0.5f);
+        Fire();
     }
 
     void Fire()

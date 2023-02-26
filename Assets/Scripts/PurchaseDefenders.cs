@@ -41,7 +41,7 @@ public class PurchaseDefenders : MonoBehaviour
 
         goldPouch.UseGold(50 * archerLevel);
         archerLevel++;
-        Instantiate(archerPrefab, archerSpawnPoints[0].position, Quaternion.identity);
+        Instantiate(archerPrefab, archerSpawnPoints[0].position, archerSpawnPoints[0].rotation);
         archerSpawnPoints.RemoveAt(0);
     }
 }

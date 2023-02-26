@@ -35,6 +35,6 @@ public class Spawner : MonoBehaviour
 
     private void SpawnGrunt(Vector3 spawnLocation)
     {
-        Instantiate(enemyPrefab, spawnLocation, Quaternion.identity);
+        Instantiate(enemyPrefab, spawnLocation, Quaternion.LookRotation(Camera.main.transform.position));
     }
 }

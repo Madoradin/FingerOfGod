@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 100f;
     [SerializeField] private int damage = 1;
-    private Transform target;
+    [SerializeField] private Transform target;
 
 
     // Start is called before the first frame update
@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Enemy")
+        if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<Enemy>().TakeDamage(damage);
         }
