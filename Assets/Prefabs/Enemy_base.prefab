@@ -96,6 +96,7 @@ MonoBehaviour:
   enemyScoreValue: 1
   enemyGoldValue: 1
   attackValue: 1
+  deathAnim: {fileID: 1130776921391309002, guid: 940e514a5780f224aaaf9baa8b894656, type: 3}
 --- !u!54 &3766117736550487909
 Rigidbody:
   m_ObjectHideFlags: 0

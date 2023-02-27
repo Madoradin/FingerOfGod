@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public int enemyScoreValue = 1;
     public int enemyGoldValue = 1;
     public int attackValue = 1;
+    [SerializeField] private GameObject deathAnim;
 
 
 
@@ -23,7 +24,9 @@ public class Enemy : MonoBehaviour
 
     public void DestroyObject()
     {
+        Vector3 bloodspawn = new Vector3(transform.position.x, Mathf.Clamp(transform.position.y, 0.53f, 1000f), transform.position.z);
         Actions.OnEnemyKilled?.Invoke(this);
+        Instantiate(deathAnim, bloodspawn, Quaternion.Euler(90, 0, 90));
         Destroy(gameObject);
     }
     public void TakeDamage(int damage)
