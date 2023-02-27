@@ -15,13 +15,13 @@ public class ScoreTracker : MonoBehaviour
     void Start()
     {
         score = 0;
-        scoreLabel.text = score.ToString();
+        scoreLabel.text = "Score: " + score.ToString();
     }
 
     public void updateScore(Enemy enemy)
     {
         score += enemy.enemyScoreValue;
-        scoreLabel.text = score.ToString();
+        scoreLabel.text = "Score: " + score.ToString();
     }
 
     private void OnDisable()

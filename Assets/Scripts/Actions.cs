@@ -8,4 +8,5 @@ public static class Actions
     public static Action<Enemy> OnEnemyKilled;
 
     public static Action<Enemy> OnReachedGate;
+
 }
